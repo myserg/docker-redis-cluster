@@ -1,4 +1,4 @@
-FROM redis:4.0.2
+FROM redis:latest
 
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
@@ -7,6 +7,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -yqq net-tools supervisor ruby rubygems locales gettext-base wget && \
     apt-get clean -yqq
 
+# FIXME: remove "-v 3.3.3" when issue will be resolved
 RUN gem install --no-document redis -v 3.3.3
 
 RUN mkdir /redis
